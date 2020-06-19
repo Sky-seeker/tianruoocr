@@ -1343,7 +1343,60 @@ namespace TrOCR
 			}
 		}
 
-		public string[] hotkey(string text, string text2, string value)
+        public void T_change_Chinese_Click(object sender, EventArgs e)
+        {
+            language = "中文标点";
+            if (typeset_txt != "")
+            {
+                RichBoxBody_T.Text = punctuation_en_ch_x(RichBoxBody_T.Text);
+                RichBoxBody_T.Text = punctuation_quotation(RichBoxBody_T.Text);
+            }
+        }
+
+        public void T_change_English_Click(object sender, EventArgs e)
+        {
+            language = "英文标点";
+            if (typeset_txt != "")
+            {
+                RichBoxBody_T.Text = punctuation_ch_en(RichBoxBody_T.Text);
+            }
+        }
+
+        public void T_change_zh_tra_Click(object sender, EventArgs e)
+        {
+            if (RichBoxBody_T.Text != null)
+            {
+                RichBoxBody_T.Text = ToTraditional(RichBoxBody_T.Text);
+            }
+        }
+
+        public void T_change_tra_zh_Click(object sender, EventArgs e)
+        {
+            if (RichBoxBody_T.Text != null)
+            {
+                RichBoxBody_T.Text = ToSimplified(RichBoxBody_T.Text);
+            }
+        }
+
+        public void T_change_str_Upper_Click(object sender, EventArgs e)
+        {
+            if (RichBoxBody_T.Text != null)
+            {
+                RichBoxBody_T.Text = RichBoxBody_T.Text.ToUpper();
+            }
+        }
+
+        public void T_change_Upper_str_Click(object sender, EventArgs e)
+        {
+            if (RichBoxBody_T.Text != null)
+            {
+                RichBoxBody_T.Text = RichBoxBody_T.Text.ToLower();
+            }
+        }
+
+
+
+        public string[] hotkey(string text, string text2, string value)
 		{
 			var array = (value + "+").Split('+');
 			if (array.Length == 3)

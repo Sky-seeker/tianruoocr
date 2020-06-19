@@ -54,7 +54,8 @@
 			this.Trans_copy = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.Trans_paste = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.Trans_SelectAll = new global::System.Windows.Forms.ToolStripMenuItem();
-			this.Trans_close = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.Trans_change = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.Trans_close = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.Trans_Voice = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.sougou = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.Mathfuntion = new global::System.Windows.Forms.ToolStripMenuItem();
@@ -69,8 +70,16 @@
 			this.baidu = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.youdao = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.Chinese = new global::System.Windows.Forms.ToolStripMenuItem();
-			this.English = new global::System.Windows.Forms.ToolStripMenuItem();
-			this.Split = new global::System.Windows.Forms.ToolStripMenuItem();
+    		this.English = new global::System.Windows.Forms.ToolStripMenuItem();
+
+            this.T_Chinese = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.T_English = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.T_zh_tra = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.T_tra_zh = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.T_str_Upper = new global::System.Windows.Forms.ToolStripMenuItem();
+            this.T_Upper_str = new global::System.Windows.Forms.ToolStripMenuItem();
+
+            this.Split = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.Restore = new global::System.Windows.Forms.ToolStripMenuItem();
 			this.menu_copy = new global::System.Windows.Forms.ContextMenuStrip();
 			this.menu_copy.Renderer = new global::TrOCR.Helper.HelpRepaint.MenuItemRendererT();
@@ -107,7 +116,9 @@
 			this.Trans_Voice.Click += new global::System.EventHandler(this.Trans_Voice_Click);
 			this.trans_input.Text = "接口";
 			this.trans_input.Click += new global::System.EventHandler(this.Trans_SelectAll_Click);
-			this.trans_google.Text = "谷歌√";
+            this.Trans_change.Text = "转换";
+
+            this.trans_google.Text = "谷歌√";
 			this.trans_google.Click += new global::System.EventHandler(this.Trans_google_Click);
 			this.trans_baidu.Text = "百度";
 			this.trans_baidu.Click += new global::System.EventHandler(this.Trans_baidu_Click);
@@ -119,7 +130,8 @@
 				this.Trans_paste,
 				this.Trans_SelectAll,
 				this.Trans_Voice,
-				this.trans_input,
+                this.Trans_change,
+                this.trans_input,
 				this.Trans_close
 			});
 			this.trans_input.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
@@ -179,6 +191,7 @@
 			this.shupai.Click += new global::System.EventHandler(this.OCR_shupai_Click);
 			this.write.Text = "手写";
 			this.write.Click += new global::System.EventHandler(this.OCR_write_Click);
+
 			this.Chinese.Text = "中文标点";
 			this.Chinese.Click += new global::System.EventHandler(this.change_Chinese_Click);
 			this.English.Text = "英文标点";
@@ -193,18 +206,48 @@
 			this.Upper_str.Click += new global::System.EventHandler(this.change_Upper_str_Click);
 			this.pinyin.Text = "汉语拼音";
 			this.pinyin.Click += new global::System.EventHandler(this.change_pinyin_Click);
-			this.change_button = this.Main_change;
-			this.change_button.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
+			
+            this.change_button = this.Main_change;
+			
+            this.change_button.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
 			{
-				this.Chinese,
-				this.English,
-				this.zh_tra,
-				this.tra_zh,
-				this.str_Upper,
-				this.Upper_str,
-				this.pinyin
-			});
-			this.interface_button = this.Main_jiekou;
+                this.Chinese,
+                this.English,
+                this.zh_tra,
+                this.tra_zh,
+                this.str_Upper,
+                this.Upper_str,
+                this.pinyin
+
+            });
+
+
+            this.T_Chinese.Text = "中文标点";
+            this.T_Chinese.Click += new global::System.EventHandler(this.T_change_Chinese_Click);
+            this.T_English.Text = "英文标点";
+            this.T_English.Click += new global::System.EventHandler(this.T_change_English_Click);
+            this.T_zh_tra.Text = "中文繁体";
+            this.T_zh_tra.Click += new global::System.EventHandler(this.T_change_zh_tra_Click);
+            this.T_tra_zh.Text = "中文简体";
+            this.T_tra_zh.Click += new global::System.EventHandler(this.T_change_tra_zh_Click);
+            this.T_str_Upper.Text = "英文大写";
+            this.T_str_Upper.Click += new global::System.EventHandler(this.T_change_str_Upper_Click);
+            this.T_Upper_str.Text = "英文小写";
+            this.T_Upper_str.Click += new global::System.EventHandler(this.T_change_Upper_str_Click);
+
+            this.T_change_button = this.Trans_change;
+            this.T_change_button.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
+            {
+                this.T_Chinese,
+                this.T_English,
+                this.T_zh_tra,
+                this.T_tra_zh,
+                this.T_str_Upper,
+                this.T_Upper_str,
+            });
+
+
+            this.interface_button = this.Main_jiekou;
 			this.interface_button.DropDownItems.AddRange(new global::System.Windows.Forms.ToolStripItem[]
 			{
 				this.sougou,
@@ -305,13 +348,21 @@
 
 		public global::System.Windows.Forms.ToolStripMenuItem Main_change;
 
-		public global::System.Windows.Forms.ToolStripDropDownItem change_button;
+        public global::System.Windows.Forms.ToolStripDropDownItem T_change_button;
+
+        public global::System.Windows.Forms.ToolStripDropDownItem change_button;
 
 		public global::System.Windows.Forms.ToolStripMenuItem Chinese;
 
 		public global::System.Windows.Forms.ToolStripMenuItem English;
 
-		public global::TrOCR.AdvRichTextBox RichBoxBody_T;
+        public global::System.Windows.Forms.ToolStripMenuItem T_Chinese;
+
+        public global::System.Windows.Forms.ToolStripMenuItem T_English;
+
+
+
+        public global::TrOCR.AdvRichTextBox RichBoxBody_T;
 
 		public global::System.Windows.Forms.ContextMenuStrip menu_copy;
 
@@ -321,7 +372,9 @@
 
 		public global::System.Windows.Forms.ToolStripMenuItem Trans_SelectAll;
 
-		public global::System.Windows.Forms.ToolStripMenuItem Trans_close;
+        public global::System.Windows.Forms.ToolStripMenuItem Trans_change;
+
+        public global::System.Windows.Forms.ToolStripMenuItem Trans_close;
 
 		public global::System.Drawing.SizeF font_base;
 
@@ -355,7 +408,17 @@
 
 		private global::System.Windows.Forms.ToolStripMenuItem Upper_str;
 
-		private global::System.Windows.Forms.ToolStripMenuItem ch_en;
+        private global::System.Windows.Forms.ToolStripMenuItem pinyin;
+
+        private global::System.Windows.Forms.ToolStripMenuItem T_zh_tra;
+
+        private global::System.Windows.Forms.ToolStripMenuItem T_tra_zh;
+
+        private global::System.Windows.Forms.ToolStripMenuItem T_str_Upper;
+
+        private global::System.Windows.Forms.ToolStripMenuItem T_Upper_str;
+
+        private global::System.Windows.Forms.ToolStripMenuItem ch_en;
 
 		private global::System.Windows.Forms.ToolStripMenuItem jap;
 
@@ -377,7 +440,7 @@
 
 		private global::System.Windows.Forms.ToolStripMenuItem Proxy;
 
-		private global::System.Windows.Forms.ToolStripMenuItem pinyin;
+
 
 		private global::System.Windows.Forms.ToolStripMenuItem trans_input;
 
